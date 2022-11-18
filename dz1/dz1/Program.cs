@@ -270,18 +270,83 @@ namespace dz1
 
         Console.WriteLine(array[k - 1]);
     }
-    
+
+    static void task3n3()
+    {
+      int n = Convert.ToInt32(Console.ReadLine());
+
+      double[] array = new double[n];
+      for (int i = 0; i < n; i++)
+      {
+        array[i] = Convert.ToDouble(Console.ReadLine());
+      }
+
+      // Вычисляем ":" в строке
+      string str = Console.ReadLine();
+      int pos1 = 0, pos2 = 0;
+
+      for (int i = 0; i < str.Length; i++)
+      {
+        if (str[i] == ':')
+        {
+          if (pos1 != 0)
+          {
+            pos2 = i;
+            break;
+          }
+          else
+          {
+            pos1 = i;
+          }
+        }
+      }
+      
+      // Обозначаем чиcла
+      int from = Convert.ToInt32(str.Substring(0, pos1)), 
+        to = Convert.ToInt32(str.Substring(pos1 + 1, pos2 - pos1 - 1)), 
+        step = Convert.ToInt32(str.Substring(pos2 + 1));
+      //Console.WriteLine($"{from}:{to}:{step}");
+      
+      bool step_is_negative = (step < 0);
+      if ((step == 0) || (from < 0 || from > to) || (to < 0 || to >= n))
+      {
+        Console.WriteLine("Incorrect input");
+        return;
+      }
+      else if (step_is_negative)
+      {
+        from = n - 1 - from;
+        to = n - to - 1;
+      }
+      // Считает размер нового массива. т.к. количество элементов = [конец - начало + 1],
+      // вычисляем это с учетом знака
+      int new_array_size = ((to - from + (step_is_negative ? -1 : 1)) / step) +
+                           (((to % step) == (from % step)) ? 1 : 0); 
+      // если остаток от деления первого и последнего элементов совпадают, массив будет на 1 элемент больше
+      
+      double[] new_array = new double[new_array_size];
+      for (int i = from, j = 0; 
+           ( (step_is_negative) ? i >= to : i <= to ); 
+           i += step, j++)
+      {
+        new_array[j] = array[i];
+        Console.Write(new_array[j] + " ");
+      }
+      Console.WriteLine();
+    }
 
     static void Main(string[] args)
     {
-      // task1n1();
-      // task1n2();
-      // task2n1();
-      // task2n2();
-      // task2n3();
-      // task2n4();
-      // task2n5();
+      task1n1();
+      task1n2();
+      task2n1();
+      task2n2();
+      task2n3();
+      task2n4();
+      task2n5();
       task3n2();
+      task3n3();
+      
 
       Console.ReadKey();
     }
