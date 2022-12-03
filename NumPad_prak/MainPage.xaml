@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NumPad_prak.MainPage"
+             >
+    
+    <Grid
+        x:Name="GridMain"
+        ColumnDefinitions="*, *, *"
+        RowDefinitions="1.5*, *, *, *, *"
+        >
+        <Button Text="X" Grid.Row="4" Grid.Column="0" Clicked="ClearClicked"/>
+        <Button Text="Y" Grid.Row="4" Grid.Column="2" Clicked="CheckClicked"/>
+        <Button Text="0" Grid.Row="4" Grid.Column="1" Clicked="DigitClicked"/>
+        <Button Text="1" Grid.Row="3" Grid.Column="0" Clicked="DigitClicked"/>
+        <Button Text="2" Grid.Row="3" Grid.Column="1" Clicked="DigitClicked"/>
+        <Button Text="3" Grid.Row="3" Grid.Column="2" Clicked="DigitClicked"/>
+        <Button Text="4" Grid.Row="2" Grid.Column="0" Clicked="DigitClicked"/>
+        <Button Text="5" Grid.Row="2" Grid.Column="1" Clicked="DigitClicked"/>
+        <Button Text="6" Grid.Row="2" Grid.Column="2" Clicked="DigitClicked"/>
+        <Button Text="7" Grid.Row="1" Grid.Column="0" Clicked="DigitClicked"/>
+        <Button Text="8" Grid.Row="1" Grid.Column="1" Clicked="DigitClicked"/>
+        <Button Text="9" Grid.Row="1" Grid.Column="2" Clicked="DigitClicked"/>
+
+        <Label Text="" FontSize="30" 
+               x:Name="DisplayLabel" Grid.Row="0" Grid.ColumnSpan="3"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+    </Grid>
+
+</ContentPage>
